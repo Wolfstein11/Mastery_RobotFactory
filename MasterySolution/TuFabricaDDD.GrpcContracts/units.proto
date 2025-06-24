@@ -1,0 +1,114 @@
+﻿// Ruta: TuFabricaDDD.GrpcContracts/Protos/units.proto
+syntax = "proto3";
+
+// Define el namespace C# para el código generado
+option csharp_namespace = "TuFabricaDDD.GrpcContracts.Units";
+
+// Define el paquete protobuf
+package Units;
+
+// Importa mensajes comunes y el tipo Empty de Google
+import "google/protobuf/empty.proto";
+import "common.proto"; // Importa nuestro archivo common.proto
+
+// --- Servicio Unit ---
+// Define todas las funciones que nuestro servicio Unit publicará a sus clientes.
+service UnitService {
+  // Comandos (operaciones que modifican el estado)
+  rpc CreateUnit (CreateUnitRequest) returns (CreateUnitResponse); // Retorna el ID de la unidad creada
+  rpc UpdateUnit (UpdateUnitRequest) returns (google.protobuf.Empty);
+  rpc DeleteUnit (DeleteRequest) returns (google.protobuf.Empty); // Reutilizamos DeleteRequest de common.proto
+
+  // Consultas (operaciones que solo leen datos)
+  rpc GetUnitById (GetRequest) returns (NullableUnitResponse); // Reutilizamos GetRequest de common.proto
+  rpc GetAllUnits (GetAllUnitsRequest) returns (UnitsResponse); // Mensaje para filtros de consulta
+}
+
+// --- Mensajes de Comando (Requests) ---
+// Mensaje para crear una nueva unidad.
+
+message CreateUnitRequest {
+  string serial_number = 1;
+  RobotCategory category = 2; // Usamos el enum del common.proto
+  string area_name = 3;
+  double current_location_x = 4;
+  double current_location_y = 5;
+  string network_location_ip_address = 6;
+  string network_location_connected_access_point_ssid = 7;
+  string network_location_connected_access_point_channel = 8;
+
+  // Propiedades específicas del brazo robótico fijo
+  // Se incluirán si la categoría es FixedRoboticArm
+  double arm_length_in_meters = 9;
+  double payload_capacity_in_kg = 10;
+  string mounting_point_id = 11;
+
+  // Propiedades específicas de robots móviles
+  // Se incluirán si la categoría es un tipo de MobileRobot
+  string locomotion_type = 12;
+}
+
+// Mensaje para actualizar una unidad existente.
+message UpdateUnitRequest {
+  string id = 1;
+  string serial_number = 2;
+  RobotStatus status = 3; // Solo permitimos actualizar el estado directamente
+  string area_name = 4;
+  double current_location_x = 5;
+  double current_location_y = 6;
+  string network_location_ip_address = 7;
+  string network_location_connected_access_point_ssid = 8;
+  string network_location_connected_access_point_channel = 9;
+}
+
+// Mensaje para listar todas las unidades (puede incluir filtros o paginación en el futuro)
+message GetAllUnitsRequest {
+  int32 page_number = 1;
+  int32 page_size = 2;
+  RobotCategory filter_by_category = 3; // Ejemplo de filtro
+}
+
+
+// --- Mensajes de Respuesta (Responses) ---
+
+// Mensaje de respuesta para la operación de creación de unidad.
+message CreateUnitResponse {
+  string unit_id = 1;      // El ID de la unidad creada (UUID como string)
+  bool is_success = 2;     // Indica si la operación fue exitosa
+  string message = 3;      // Mensaje de éxito o error
+}
+
+// Mensaje base para la respuesta de una unidad individual
+message UnitResponse {
+  string id = 1;
+  string serial_number = 2;
+  RobotCategory category = 3;
+  RobotStatus status = 4;
+  string area_name = 5;
+  double current_location_x = 6;
+  double current_location_y = 7;
+  string network_location_ip_address = 8;
+  string network_location_connected_access_point_ssid = 9;
+  string network_location_connected_access_point_channel = 10;
+
+  // Propiedades específicas del brazo robótico fijo
+  double arm_length_in_meters = 11;
+  double payload_capacity_in_kg = 12;
+  string mounting_point_id = 13;
+
+  // Propiedades específicas de robots móviles
+  string locomotion_type = 14;
+}
+
+// Mensaje de respuesta para múltiples unidades
+message UnitsResponse {
+  repeated UnitResponse items = 1;
+}
+
+// Mensaje para permitir una respuesta de unidad que puede ser nula
+// Útil para GetById donde la unidad podría no encontrarse.
+message NullableUnitResponse {
+  oneof kind {
+    UnitResponse unit = 1;
+  }
+}

@@ -1,0 +1,43 @@
+// Ruta: TuFabricaDDD.GrpcContracts/Protos/common.proto
+syntax = "proto3";
+
+option csharp_namespace = "TuFabricaDDD.GrpcContracts.Common";
+
+// Mensajes de Solicitud Genéricos
+// Usados para operaciones que requieren solo un ID para identificar el recurso.
+
+message GetRequest {
+  string id = 1; // El ID del recurso a obtener (ej. Robot ID)
+}
+
+message DeleteRequest {
+  string id = 1; // El ID del recurso a eliminar (ej. Robot ID)
+}
+
+// Enumeraciones para el estado del Robot
+// Mapea directamente a los enums del dominio TuFabricaDDD.Domain.Types
+
+enum RobotCategory {
+  // Siempre se recomienda tener un valor "UNSPECIFIED" en la posición 0
+  // para manejar casos donde el valor no está establecido o es desconocido.
+  UNKNOWN_CATEGORY = 0;
+  FIXED_ROBOTIC_ARM = 1;
+  HUMANOID = 2;
+  LOGISTICS_MOBILE = 3;
+  CLEANING_MOBILE = 4;
+}
+
+enum RobotStatus {
+  UNKNOWN_STATUS = 0;
+  OPERATIONAL = 1;
+  OUT_OF_SERVICE = 2;
+  MAINTENANCE = 3;
+  DEPLOYED = 4;
+  IDLE = 5;
+}
+
+// Opcional: Un mensaje de respuesta genérico para operaciones sin retorno específico
+message OperationResponse {
+  bool success = 1;
+  string message = 2;
+}

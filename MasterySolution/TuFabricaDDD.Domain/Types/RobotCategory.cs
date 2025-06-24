@@ -25,11 +25,6 @@ public enum RobotCategory
     LogisticsMobile,
 
     /// <summary>
-    /// Robots móviles dedicados a la seguridad y vigilancia de las instalaciones.
-    /// </summary>
-    //SecurityMobile,
-
-    /// <summary>
     /// Robots móviles especializados en tareas de limpieza y mantenimiento del área.
     /// </summary>
     CleaningMobile

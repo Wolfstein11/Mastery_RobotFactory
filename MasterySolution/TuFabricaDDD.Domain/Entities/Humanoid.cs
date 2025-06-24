@@ -13,8 +13,6 @@ namespace TuFabricaDDD.Domain.Entities;
 
 public sealed class Humanoid : MobileRobot
 {
-    public bool HasManipulators { get; private set; }
-    public string OperatingSystemVersion { get; private set; }
     public List<string> EquippedTools { get; private set; }
 
     private Humanoid() : base() { }
@@ -28,11 +26,6 @@ public sealed class Humanoid : MobileRobot
         string operatingSystemVersion)
         : base(id, serialNumber, RobotCategory.Humanoid, initialLocation, initialNetworkLocation, LocomotionType.Bipedal)
     {
-        if (string.IsNullOrWhiteSpace(operatingSystemVersion))
-            throw new ArgumentNullException(nameof(operatingSystemVersion), new InvalidArgumentError(nameof(operatingSystemVersion), "La versión del sistema operativo no puede ser nula o vacía.").Message);
-
-        HasManipulators = hasManipulators;
-        OperatingSystemVersion = operatingSystemVersion;
         EquippedTools = new List<string>();
     }
 
@@ -40,7 +33,6 @@ public sealed class Humanoid : MobileRobot
     {
         var rules = new List<IBusinessRule>
         {
-            new MustHaveManipulatorsRule(HasManipulators),
             new BatteryLevelMustBeSufficientRule(BatteryLevelPercentage, 20)
         };
 

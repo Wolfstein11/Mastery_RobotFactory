@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
+# Blend for Visual Studio Version 17
 VisualStudioVersion = 17.14.36121.58
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuFabricaDDD.Persistence", "TuFabricaDDD.Persistance\TuFabricaDDD.Persistence.csproj", "{CF0660A7-C386-4643-8B6C-1EB30627B093}"
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuFabricaDDD.GrpcContracts", "TuFabricaDDD.GrpcContracts\TuFabricaDDD.GrpcContracts.csproj", "{9D6209CA-1205-4F90-9B6B-19A75E060F79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuFabricaDDD.Domain", "TuFabricaDDD.Domain\TuFabricaDDD.Domain.csproj", "{5C2EAED1-3C92-85B4-9C57-858E3301118E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TuFabricaDDD.UI", "TuFabricaDDD.UI\TuFabricaDDD.UI.csproj", "{A460E866-92A9-4082-B908-A2990DB4789F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{5C2EAED1-3C92-85B4-9C57-858E3301118E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C2EAED1-3C92-85B4-9C57-858E3301118E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C2EAED1-3C92-85B4-9C57-858E3301118E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A460E866-92A9-4082-B908-A2990DB4789F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A460E866-92A9-4082-B908-A2990DB4789F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A460E866-92A9-4082-B908-A2990DB4789F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A460E866-92A9-4082-B908-A2990DB4789F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

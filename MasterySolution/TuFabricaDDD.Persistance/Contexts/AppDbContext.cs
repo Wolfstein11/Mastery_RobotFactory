@@ -12,10 +12,7 @@ public class AppDbContext : DbContext
     // Constructor principal que acepta DbContextOptions, lo que permite configurar el contexto
     // desde el exterior (ej. desde tu proyecto de API o de inicio) para la cadena de conexión, etc.
     public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options)
-    {
-    }
-
+        : base(options) {}
     // --- DbSets para tus Entidades ---
     public DbSet<Robot> Robots { get; set; } // Representa la tabla base para todos los robots
     public DbSet<FixedRoboticArm> FixedRoboticArms { get; set; }

@@ -45,7 +45,16 @@ message CreateUnitRequest {
 
   // Propiedades específicas de robots móviles
   // Se incluirán si la categoría es un tipo de MobileRobot
-  string locomotion_type = 12;
+  LocomotionType locomotion_type = 12;
+  double battery_level = 13; // Capacidad de batería para robots móviles
+  //Propiedades de robots humanoides
+  bool equiped_tool = 14; // Indica si el robot humanoide tiene herramientas equipadas
+  
+  //Propiedades de robots de logística
+  double payload_capacity_in_kg_logistics = 15; // Capacidad de carga para robots de logística
+  
+  //Propiedades de robots de limpieza
+  string cleaning_type = 16; // Tipo de limpieza (ej. aspiradora, fregadora)
 }
 
 // Mensaje para actualizar una unidad existente.
@@ -97,7 +106,17 @@ message UnitResponse {
   string mounting_point_id = 13;
 
   // Propiedades específicas de robots móviles
-  string locomotion_type = 14;
+  // Se incluirán si la categoría es un tipo de MobileRobot
+  LocomotionType locomotion_type = 14;
+  double battery_level = 15; // Capacidad de batería para robots móviles
+  //Propiedades de robots humanoides
+  bool equiped_tool = 16; // Indica si el robot humanoide tiene herramientas equipadas
+  
+  //Propiedades de robots de logística
+  double payload_capacity_in_kg_logistics = 17; // Capacidad de carga para robots de logística
+  
+  //Propiedades de robots de limpieza
+  string cleaning_type = 18; // Tipo de limpieza (ej. aspiradora, fregadora)
 }
 
 // Mensaje de respuesta para múltiples unidades

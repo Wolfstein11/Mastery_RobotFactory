@@ -21,9 +21,7 @@ public sealed class Humanoid : MobileRobot
         Guid id,
         string serialNumber,
         Location initialLocation,
-        NetworkLocation initialNetworkLocation,
-        bool hasManipulators,
-        string operatingSystemVersion)
+        NetworkLocation initialNetworkLocation)
         : base(id, serialNumber, RobotCategory.Humanoid, initialLocation, initialNetworkLocation, LocomotionType.Bipedal)
     {
         EquippedTools = new List<string>();

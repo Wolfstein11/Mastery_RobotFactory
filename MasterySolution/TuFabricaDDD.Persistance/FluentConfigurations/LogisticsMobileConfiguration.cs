@@ -16,15 +16,5 @@ public class LogisticsMobileConfiguration : EntityTypeConfigurationBase<Logistic
 
         builder.Property(l => l.MaxPayloadCapacityInKg)
             .IsRequired();
-
-        builder.Property(l => l.CurrentPayloadWeightInKg)
-            .IsRequired();
-
-        builder.Property(l => l.NavigationSystemType)
-            .IsRequired()
-            .HasMaxLength(100);
-
-        builder.Property(l => l.CurrentCargoDescription)
-            .HasMaxLength(255); // No es requerido, pero con longitud máxima
     }
 }

@@ -51,6 +51,9 @@ public interface IGenericRepository<TEntity> where TEntity : class, IEntity
     /// <param name="id">El ID de la entidad a eliminar.</param>
     Task DeleteAsync(Guid id);
 
+    // Observacion: Añadir CancellationToken si es necesario para operaciones asíncronas más eficientes.
+    // Task<IEnumerable<TEntity>> GetAllAsync(CancellationToken cancellationToken = default);
+
     // Opcional: Podrías añadir métodos para añadir/actualizar/eliminar colecciones si es necesario.
     // Task AddRangeAsync(IEnumerable<TEntity> entities);
     // Task RemoveRangeAsync(IEnumerable<TEntity> entities);

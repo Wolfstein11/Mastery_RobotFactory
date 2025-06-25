@@ -20,14 +20,11 @@ public sealed class LogisticsMobile : MobileRobot
         string serialNumber,
         Location initialLocation,
         NetworkLocation initialNetworkLocation,
-        double maxPayloadCapacityInKg,
-        string navigationSystemType)
+        double maxPayloadCapacityInKg)
         : base(id, serialNumber, RobotCategory.LogisticsMobile, initialLocation, initialNetworkLocation, LocomotionType.Wheeled)
     {
         if (maxPayloadCapacityInKg <= 0)
             throw new ArgumentNullException(nameof(maxPayloadCapacityInKg), new InvalidArgumentError(nameof(maxPayloadCapacityInKg), "La capacidad máxima de carga debe ser mayor que cero.").Message);
-        if (string.IsNullOrWhiteSpace(navigationSystemType))
-            throw new ArgumentNullException(nameof(navigationSystemType), new InvalidArgumentError(nameof(navigationSystemType), "El tipo de sistema de navegación no puede ser nulo o vacío.").Message);
 
         MaxPayloadCapacityInKg = maxPayloadCapacityInKg;
     }

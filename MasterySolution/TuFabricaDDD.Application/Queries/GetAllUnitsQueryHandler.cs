@@ -12,7 +12,7 @@ namespace TuFabricaDDD.Application.Queries
     // Hereda de IQueryHandler<GetAllUnitsQuery, IEnumerable<Unit>>
     // para indicar que maneja GetAllUnitsQuery y devuelve un IEnumerable de Units.
     public class GetAllUnitsQueryHandler
-        : IQueryHandler<GetAllUnitsQuery, IEnumerable<Unit>>
+        : IQueryHandler<GetAllUnitsQuery, IEnumerable<Robot>>
     {
         // Usamos IRepositoryManager, no IAppRepositoryManager, según tu aclaración anterior.
         private readonly IRepositoryManager _repositoryManager;
@@ -22,14 +22,13 @@ namespace TuFabricaDDD.Application.Queries
             _repositoryManager = repositoryManager;
         }
 
-        public async Task<Result<IEnumerable<Unit>>> Handle(
+        public async Task<Result<IEnumerable<Robot>>> Handle(
             GetAllUnitsQuery request,
             CancellationToken cancellationToken)
         {
-            // Asumo que tu IRepositoryManager.RobotRepository (o IRepositoryManager.UnitRepository)
-            // tiene un método GetUnitsAsync() que devuelve un Task<IEnumerable<Unit>>.
-            // Si tu repositorio se llama 'Unit' en el manager, usaremos eso.
-            var units = await _repositoryManager.RobotRepository.GetAllAsync(cancellationToken); // Asumo GetAllAsync() o GetUnitsAsync()
+            // IRepositoryManager.RobotRepository tiene un método GetUnitsAsync() que devuelve un Task<IEnumerable<Unit>>.
+            
+            var units = await _repositoryManager.Robots.GetAllAsync();
 
             // Si necesitas mapear la entidad de dominio 'Robot' a un DTO de consulta específico,
             // lo harías aquí usando AutoMapper. Por ahora, devolvemos la entidad directamente.

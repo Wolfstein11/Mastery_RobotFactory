@@ -16,13 +16,6 @@ public class HumanoidConfiguration : EntityTypeConfigurationBase<Humanoid>
     {
         base.Configure(builder);
 
-        builder.Property(h => h.HasManipulators)
-            .IsRequired();
-
-        builder.Property(h => h.OperatingSystemVersion)
-            .IsRequired()
-            .HasMaxLength(50);
-
         // Configuración para la colección de strings 'EquippedTools'
         // EF Core no soporta colecciones de tipos primitivos directamente en la tabla principal.
         // Una opción común es serializarlos (ej. a JSON) o mapearlos a una tabla separada.

@@ -30,10 +30,18 @@ enum RobotCategory {
 enum RobotStatus {
   UNKNOWN_STATUS = 0;
   OPERATIONAL = 1;
-  OUT_OF_SERVICE = 2;
+  BUSY = 2;
   MAINTENANCE = 3;
-  DEPLOYED = 4;
+  BROKEN = 4;
   IDLE = 5;
+}
+
+enum LocomotionType {
+  UNKNOWN_LOCOMOTION = 0;
+  WHEELED = 1;
+  BIPEDAL = 2;
+  TRACKED = 3;
+  AERIAL = 4;
 }
 
 // Opcional: Un mensaje de respuesta genérico para operaciones sin retorno específico

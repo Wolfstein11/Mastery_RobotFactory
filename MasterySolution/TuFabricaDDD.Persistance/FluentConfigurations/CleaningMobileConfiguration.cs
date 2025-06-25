@@ -31,14 +31,5 @@ public class CleaningMobileConfiguration : EntityTypeConfigurationBase<CleaningM
                     c => c.ToList()
                 )
             );
-
-        builder.Property(c => c.DetergentLevelPercentage)
-            .IsRequired();
-
-        builder.Property(c => c.WaterLevelPercentage)
-            .IsRequired();
-
-        builder.Property(c => c.DustbinCapacityPercentage)
-            .IsRequired();
     }
 }

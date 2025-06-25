@@ -18,6 +18,19 @@ namespace TuFabricaDDD.Application.Commands
         double? ArmLengthInMeters,
         double? PayloadCapacityInKg,
         string? MountingPointId,
-        string? LocomotionType
+        LocomotionType? Locomotion,
+        double MaxPayloadCapacityInKg
     ) : ICommand<Guid>;
+
+    public sealed record UpdateUnitCommand(
+    Guid Id,
+    string AreaName,
+    double CurrentLocationX,
+    double CurrentLocationY,
+    string NetworkLocationIpAddress,
+    string NetworkLocationConnectedAccessPointSsid,
+    int NetworkLocationConnectedAccessPointChannel
+) : ICommand;
+
+    public sealed record DeleteUnitCommand(Guid Id) : ICommand;
 }
